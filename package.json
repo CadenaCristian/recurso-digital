@@ -2,7 +2,7 @@
   "name": "manual-tecnico",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://CadenaCristian.github.io/recurso-digital",
+  "homepage": "https://cadenacristian.github.io/recurso-digital/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

@@ -37,13 +37,13 @@ const App = () => {
         <div className="col-md-2">
           <div style={{ position: 'fixed' }}>
             <div className="row mt-3">
-              <button className="btn btn-success col-md-12" onClick={() => showEntorno()}>Entorno de MYSQL</button>
+              <button className="btn btn-success col-md-12" onClick={() => showEntorno()}>Capitulo #1</button>
             </div>
             <div className="row mt-3">
-              <button className="btn btn-success col-md-12" onClick={() => showDiseño()}>Diseño del proyecto</button>
+              <button className="btn btn-success col-md-12" onClick={() => showDiseño()}>Capitulo #2</button>
             </div>
             <div className="row mt-3">
-              <button className="btn btn-success col-md-12" onClick={() => showBiblio()}>Diseño del proyecto</button>
+              <button className="btn btn-success col-md-12" onClick={() => showBiblio()}>Capitulo #3</button>
             </div>
           </div>
         </div>
