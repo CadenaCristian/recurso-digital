@@ -5,7 +5,7 @@ const Header = () => {
     return(
         <div className="container-fluid">
             <div className="row text-center">
-                <h1>Recurso digital</h1>
+                <h1>Recurso digital Bases de datos</h1>
             </div>
         </div>
     )
