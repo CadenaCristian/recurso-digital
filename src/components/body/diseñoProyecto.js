@@ -1,64 +1,48 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { dataCompras, dataAlmacen, dataInventarios } from '../../variables/variables';
+import diseñoBD5 from '../../recursos/Avances5.png';
+import { dataCompras, dataAlmacen, dataInventarios, DiseñoBaseDatos } from '../../variables/variables';
 const DiseñoProyecto = () => {
 
-    const [compras, setCompras] = useState(true);
-    const [almacen, setAlmacen] = useState(false);
-    const [inventario, setInventario] = useState(false)
-    const [comprasCont, setComprasCont] = useState('block');
-    const [inventarioCont, setInventarioCont] = useState('none');
-    const [ejecuCont, setejecuCont] = useState('none');
+    const [avances, setAvances] = useState("block")
+    const [descripcion, setDescripcion] = useState("none")
 
-    const showCompras = () => {
-        setCompras(true);
-        setAlmacen(false);
-        setInventario(false);
-        setComprasCont('block');
-        setInventarioCont('none');
-        setejecuCont('none');
+    const showDescripcion = () => {
+        setAvances("none");
+        setDescripcion("block");
     }
 
-    const showAlmacen = () => {
-        setCompras(false);
-        setAlmacen(true);
-        setInventario(false);
-        setComprasCont('none');
-        setInventarioCont('block');
-        setejecuCont('none');
-    }
-
-    const showInventario = () => {
-        setCompras(false);
-        setAlmacen(false);
-        setInventario(true);
-        setComprasCont('none');
-        setInventarioCont('none');
-        setejecuCont('block');
+    const showAvances = () => {
+        setAvances("block");
+        setDescripcion("none");
     }
 
     return (
         <div className="container">
             <div className="row justify-content-center">
-                <button className="btn btn-primary col-md-3 m-3" onClick={showCompras} disabled={compras}>Compras</button>
-                <button className="btn btn-primary col-md-3 m-3" onClick={showAlmacen} disabled={almacen}>Almacen</button>
-                <button className="btn btn-primary col-md-3 m-3" onClick={showInventario} disabled={inventario}>Inventario</button>
+                <button className="btn btn-primary col-md-3 m-3" onClick={showAvances}>Avances</button>
+                <button className="btn btn-primary col-md-3 m-3" onClick={showDescripcion}>Descripción</button>
             </div>
             <div className="row">
-                <div style={{ display: comprasCont }}>
+                <div style={{ display: descripcion }}>
+                    <h3>Compras</h3>
                     <ul>
                         {dataCompras.map((dat) => (<li>{dat}</li>))}
                     </ul>
-                </div>
-                <div style={{ display: inventarioCont }}>
+                    <h3>Almacen</h3>
                     <ul>
                         {dataAlmacen.map((dat) => (<li>{dat}</li>))}
                     </ul>
-                </div>
-                <div style={{ display: ejecuCont }}>
+                    <h3>Inventario</h3>
                     <ul>
                         {dataInventarios.map((dat) => (<li>{dat}</li>))}
                     </ul>
+                </div>
+                <div style={{ display: avances }}>
+                    <h3 className="text-center">Diseño de la base de datos</h3>
+                    <DiseñoBaseDatos />
+                    <h3 className="text-center">Avance en el diseño de clases</h3>
+                    <img src={diseñoBD5} className="d-block w-100" />
                 </div>
             </div>
         </div>

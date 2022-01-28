@@ -25,6 +25,24 @@ import paso3e from '../recursos/ejecu_img-3.png';
 import paso4e from '../recursos/ejecu_img-4.png';
 import paso5e from '../recursos/ejecu_img-5.png';
 import paso6e from '../recursos/ejecu_img-6.png';
+import diseñoBD1 from '../recursos/Avances1.png';
+import diseñoBD2 from '../recursos/Avances2.png';
+import diseñoBD3 from '../recursos/Avances3.png';
+import diseñoBD4 from '../recursos/Avances4.png';
+import createTable1 from '../recursos/createTable1.png';
+import createTable2 from '../recursos/createTable2.png';
+import innerJoin1 from '../recursos/innerJoin1.png';
+import innerJoin2 from '../recursos/innerJoin2.png';
+import nuestroProyecto1 from '../recursos/nuestroProyecto1.png';
+import nuestroProyecto2 from '../recursos/nuestroProyecto2.png';
+import nuestroProyecto3 from '../recursos/nuestroProyecto3.png';
+import nuestroProyecto4 from '../recursos/nuestroProyecto4.png';
+import nuestroProyecto5 from '../recursos/nuestroProyecto5.png';
+import nuestroProyecto6 from '../recursos/nuestroProyecto6.png';
+import leftJoin1 from '../recursos/leftJoin1.png';
+import leftJoin2 from '../recursos/leftJoin2.png';
+import rightJoin1 from '../recursos/rightJoin1.png';
+import rightJoin2 from '../recursos/rightJoin2.png';
 
 const dataInstall = [
     {
@@ -151,6 +169,716 @@ const dataEjecucion = [
     }
 ]
 
+const diseñoDB = [diseñoBD1, diseñoBD2, diseñoBD3, diseñoBD4]
+
+const tablaEmpleado = [
+    {
+        "atributo": "Id_empleado",
+        "tipoDato": "Int",
+        "longitud": "-",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Email",
+        "tipoDato": "Varchar",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Email del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Password",
+        "tipoDato": "Varchar",
+        "longitud": "32",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Clave del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Nombres",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Nombres del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Apellidos",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Apellidos del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "fechaNacimiento",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de nacimiento del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Identificación",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Número de identificación del empleado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "tipoIdentificacion",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Tipo de identificación (cc, ce)",
+        "entidadForanea": ""
+    }
+]
+
+const tablaCargo = [
+    {
+        "atributo": "Id_cargo",
+        "tipoDato": "Int",
+        "longitud": "-",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código del cargo.",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Nombre_cargo",
+        "tipoDato": "Varchar",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Nombre del cargo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Funciones",
+        "tipoDato": "Varchar",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Funciones del departamento",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Descripción",
+        "tipoDato": "Varchar",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Descripción del cargo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Hora_inicio",
+        "tipoDato": "Time",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Hora de iniciar su horario laboral",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Hora_fin",
+        "tipoDato": "Time",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Hora final de su horario laboral",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Fecha_inicio",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de inicio de su contrato laboral",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Fecha_fin",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "Si",
+        "descripcion": "Fecha final de su contrato laboral",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Tipo_contrato",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Tipo de contrato laboral con la empresa",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Empleado_id_empleado",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del empleado asociado",
+        "entidadForanea": "empleado"
+    }
+]
+
+const tablaArea = [
+    {
+        "atributo": "Id_area",
+        "tipoDato": "Int",
+        "longitud": "-",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código del area.",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Nombre_area",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "-",
+        "null": "No",
+        "descripcion": "Nombre del área",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Nombre_jefe",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Nombre del jefe del área",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Responsable",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Nombre del responsable si el jefe no esta",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "CentroDeCostos",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Código del centro de costos",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Presupuesto",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Presupuesto destinado para esa área",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Cargo_id_cargo",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del cargo",
+        "entidadForanea": "cargo"
+    }
+]
+
+const tablaSolicitudes = [
+    {
+        "atributo": "Id_solicitud",
+        "tipoDato": "Int",
+        "longitud": "-",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código de las solicitudes",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "numeroSolicitud",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Numero de la solicitud",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "fechaSolicitud",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de realización de la solicitud",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "aprobadoJefe",
+        "tipoDato": "Booleano",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Visto bueno de aprobación del jefe del área ",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "aprobadoDirector",
+        "tipoDato": "Booleano",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Visto bueno de aprobación del director financiero",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Empleado_id_empleado",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del empleado",
+        "entidadForanea": ""
+    }
+]
+
+const tablaCotizaciones = [
+    {
+        "atributo": "Id_cotizaciones",
+        "tipoDato": "Int",
+        "longitud": "-",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código de CategoriaARL",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Consecutivo",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Número del consecutivo ",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Fecha",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de la cotización",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Proveedor_id_proveedor",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del proveedor",
+        "entidadForanea": "Proveedor"
+    },
+    {
+        "atributo": "Solicitudes_id_solicitud",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código de la solicitud",
+        "entidadForanea": "solicitud"
+    }
+]
+
+const tablaAlmacen = [
+    {
+        "atributo": "Id_almacen",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código del almacén",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Capacidad",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Capacidad de almacenamiento",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Ubicación",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Lugar donde está ubicado",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Ciudad",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Ciudad donde se encuentra el almacén",
+        "entidadForanea": ""
+    }
+]
+
+const tablaArticulo = [
+    {
+        "atributo": "Id_articulo",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Identificador del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Código",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Código del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Nombre_articulo",
+        "tipoDato": "Varchar",
+        "longitud": "16",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Nombre del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Unid_medida",
+        "tipoDato": "Varchar",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Unidad de medida del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Valor_unid",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Valor unitario del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Dimensiones",
+        "tipoDato": "Decimal",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Dimensiones del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Peso",
+        "tipoDato": "Decimal",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Peso del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Garantía",
+        "tipoDato": "Datetime",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Garantía que tiene ese articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Descripción",
+        "tipoDato": "Varchar",
+        "longitud": "255",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Descripción del articulo",
+        "entidadForanea": ""
+    }
+]
+
+const tablaTransaccionInterna = [
+    {
+        "atributo": "idtransaccionInterna",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Identificador de la transacción interna",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Código",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Código de la transacción interna",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "tipoEntrega",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Tipo de entrega del articulo",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Fecha",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de realización de la transacción",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "cantidadEntregada",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Cantidad que se entrega de los artículos",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Almacen_id_almacen",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del almacen",
+        "entidadForanea": "Almacen"
+    },
+    {
+        "atributo": "Articulo",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del articulo",
+        "entidadForanea": "Articulo "
+    }
+]
+
+const tablaProveedor = [
+    {
+        "atributo": "Id_proveedor",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Código del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Identificación",
+        "tipoDato": "Int",
+        "longitud": "25",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Identificación del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Nombre_proveedor",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Nombre del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Email_proveedor",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Correo electrónico del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Dirección_proveedor",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Dirección del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Teléfono_proveedor",
+        "tipoDato": "Int",
+        "longitud": "10",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Teléfono del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Ciudad_proveedor",
+        "tipoDato": "Varchar",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Ciudad del proveedor",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Articulo_id_articulo",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código del articulo",
+        "entidadForanea": "articulo"
+    }
+]
+
+const tablaOrdenCompra = [
+    {
+        "atributo": "Id_ordencompra",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Identificación de la orden de compra",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "numeroOrden",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Número de la orden de compra",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "fechaOrden",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de la orden de compra",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "fechaEntrega",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de entrega de la orden de compra",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "aprobacionDirector",
+        "tipoDato": "Booleano",
+        "longitud": "45",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Verificación de la aprobación del director financiero",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Cotizaciones_id_cotizaciones",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código de las cotizaciones",
+        "entidadForanea": "cotizaciones"
+    }
+]
+
+const tablaFactura = [
+    {
+        "atributo": "Id_Factura",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "PK",
+        "null": "No",
+        "descripcion": "Identificación de la factura",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "numeroDeEntrada",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Numero de entrada de la factura",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "fechaRealizada",
+        "tipoDato": "Date",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Fecha de la realización de la factura",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "cantidadComprada",
+        "tipoDato": "Int",
+        "longitud": "",
+        "llave": "",
+        "null": "No",
+        "descripcion": "Cantidad de artículos comprados",
+        "entidadForanea": ""
+    },
+    {
+        "atributo": "Ordencompra_id_ordencompra",
+        "tipoDato": "Varchar",
+        "longitud": "",
+        "llave": "FK",
+        "null": "No",
+        "descripcion": "Código de la orden de compra",
+        "entidadForanea": "ordencompra"
+    }
+]
+
 export const dataCompras = [
     'Recibe las solicitudes de compras de las diferentes áreas de la empresa.',
     'Cada solicitud tiene un responsable.',
@@ -184,7 +912,8 @@ export const dataBibliografia = [
     'Programador cli. (s.f.). Desencadenantes en mysql. Obtenido de https://programmerclick.com/article/560155323/',
     'Robledano, Á. (24 de Septiembre de 2019). Qué es MySQL: Características y ventajas. Obtenido de https://openwebinars.net/blog/que-es-mysql/',
     'Schiaffarino, A. (12 de Marzo de 2019). Modelo cliente servidor. Obtenido de https://blog.infranetworking.com/modelo-cliente-servidor/',
-    'Soto, J. A. (27 de Julio de 2020). ¿Qué es PowerShell? Obtenido de https://www.geeknetic.es/PowerShell/que-es-y-para-que-sirve'
+    'Soto, J. A. (27 de Julio de 2020). ¿Qué es PowerShell? Obtenido de https://www.geeknetic.es/PowerShell/que-es-y-para-que-sirve',
+    'Sentencias principales de SQL: https://diego.com.es/principales-tipos-de-joins-en-sql'
 ]
 
 export const Introducción = () => {
@@ -227,11 +956,439 @@ export const Ejecucion = () => {
     return (
         <div>
             <ul>
-                {dataEjecucion.map((dt) => (<li className="mt-3">
+                {dataEjecucion.map((dt, index) => (<li key={index} className="mt-3">
                     {dt.description} <br />
                     <img src={dt.img} className="d-block w-100" />
                 </li>))}
             </ul>
+        </div>
+    )
+}
+
+export const DiseñoBaseDatos = () => {
+    return (
+        <div>
+            <ul>
+                {diseñoDB.map((dat, index) => (
+                    <li key={index}>
+                        <img src={dat} className="d-block w-100" />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+export const SentenciasSql = () => {
+    return (
+        <div>
+            <h3 className="text-center">Principales sentencias de sql</h3>
+            <p>Crear una base de datos y usarla</p>
+            <img src={createTable1} className="d-block w-100" />
+            <p>Crear una tabla</p>
+            <img src={createTable2} className="d-block w-100" />
+            <h3 className="text-center">Inner join</h3>
+            <p>
+                INNER JOIN lo que hace es seleccionar todas las filas de las dos columnas siempre y cuando haya una coincidencia entre las columnas en ambas tablas. Es el tipo de JOIN más común.
+            </p>
+            <img src={innerJoin1} className="d-block w-100" />
+            <img src={innerJoin2} className="d-block w-100" />
+            <h3 className="text-center">Aplicándolo a nuestro proyecto</h3>
+            <img src={nuestroProyecto1} className="d-block w-100" />
+            <img src={nuestroProyecto2} className="d-block w-100" />
+            <h3 className="text-center">Left join</h3>
+            <p>
+                LEFT JOIN mantiene todas las filas de la tabla izquierda (la tabla1). Las filas de la tabla derecha se mostrarán si hay una coincidencia con las de la izquierda. Si existen valores en la tabla izquierda pero no en la tabla derecha, ésta mostrará null.
+            </p>
+            <img src={leftJoin1} className="d-block w-100" />
+            <img src={leftJoin2} className="d-block w-100" />
+            <h3 className="text-center">Aplicándolo a nuestro proyecto</h3>
+            <img src={nuestroProyecto3} className="d-block w-100" />
+            <img src={nuestroProyecto4} className="d-block w-100" />
+            <h3 className="text-center">RIGHT JOIN</h3>
+            <p>
+                Es igual que LEFT JOIN pero al revés. Ahora se mantienen todas las filas de la tabla derecha (tabla2). Las filas de la tabla izquierda se mostrarán si hay una coincidencia con las de la derecha. Si existen valores en la tabla derecha pero no en la tabla izquierda, ésta se mostrará null.
+            </p>
+            <img src={rightJoin1} className="d-block w-100" />
+            <img src={rightJoin2} className="d-block w-100" />
+            <h3 className="text-center">Aplicándolo a nuestro proyecto</h3>
+            <img src={nuestroProyecto5} className="d-block w-100" />
+            <img src={nuestroProyecto6} className="d-block w-100" />
+            <p>En este caso no muestra el dato repetido que están en la tabla empleado, y tampoco los que no tienen asignado un cargo</p>
+        </div>
+    )
+}
+
+export const TableEmpleado = () => {
+    return (
+        <div>
+            <h3>1. Tabla: Empleado</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaEmpleado.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableCargo = () => {
+    return (
+        <div>
+            <h3>2. Tabla: Cargo</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaCargo.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableArea = () => {
+    return (
+        <div>
+            <h3>3. Tabla: Area</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaArea.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableSolicitudes = () => {
+    return (
+        <div>
+            <h3>4. Tabla: Solicitudes</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaSolicitudes.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableCotizaciones = () => {
+    return (
+        <div>
+            <h3>5. Tabla: Cotizaciones</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaCotizaciones.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableAlmacen = () => {
+    return (
+        <div>
+            <h3>6. Tabla: Almacen</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaAlmacen.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableArticulo = () => {
+    return (
+        <div>
+            <h3>7. Tabla: Articulo</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaArticulo.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableTransaccionInterna = () => {
+    return (
+        <div>
+            <h3>8. Tabla: Transacción Interna</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaTransaccionInterna.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableProveedor = () => {
+    return (
+        <div>
+            <h3>9. Tabla: Proveedor</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaProveedor.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableOrdenCompra = () => {
+    return (
+        <div>
+            <h3>10. Tabla: Proveedor</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaOrdenCompra.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export const TableFactura = () => {
+    return (
+        <div>
+            <h3>10. Tabla: Proveedor</h3>
+            <table className="table table-hover">
+                <thead className="text-center">
+                    <tr>
+                        <th>ATRIBUTO</th>
+                        <th>TIPO DE DATO</th>
+                        <th>LONGITUD</th>
+                        <th>LLAVE</th>
+                        <th>NULL</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TABLA O ENTIDAD FORÁNEA</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {tablaFactura.map((dat, index) =>
+                        <tr key={index}>
+                            <td>{dat.atributo}</td>
+                            <td>{dat.tipoDato}</td>
+                            <td>{dat.longitud}</td>
+                            <td>{dat.llave}</td>
+                            <td>{dat.null}</td>
+                            <td>{dat.descripcion}</td>
+                            <td>{dat.entidadForanea}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
         </div>
     )
 }
