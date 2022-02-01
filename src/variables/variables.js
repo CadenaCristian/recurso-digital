@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import paso1 from '../recursos/inst_img-1.png';
 import paso2 from '../recursos/inst_img-2.png';
@@ -29,6 +29,7 @@ import diseñoBD1 from '../recursos/Avances1.png';
 import diseñoBD2 from '../recursos/Avances2.png';
 import diseñoBD3 from '../recursos/Avances3.png';
 import diseñoBD4 from '../recursos/Avances4.png';
+import diseñoBD5 from '../recursos/Avances5.png';
 import createTable1 from '../recursos/createTable1.png';
 import createTable2 from '../recursos/createTable2.png';
 import innerJoin1 from '../recursos/innerJoin1.png';
@@ -156,7 +157,7 @@ const dataEjecucion = [
         "img": paso3e
     },
     {
-        "description": "Para conectarse con la base de datos se escribe \sql;",
+        "description": "Para conectarse con la base de datos se escribe sql;",
         "img": paso4e
     },
     {
@@ -879,7 +880,19 @@ const tablaFactura = [
     }
 ]
 
-export const dataCompras = [
+const dataBibliografia = [
+    'Bigdata-analytics. (s.f.). ¿Qué es un procedimiento almacenado? Obtenido de https://bigdata-analytics.es/sql/stored-procedures/',
+    'Datamedia. (s.f.). ¿Qué es SQL? Obtenido de https://datademia.es/blog/que-es-sql',
+    'Microsoft. (s.f.). Vistas. Obtenido de https://docs.microsoft.com/es-es/sql/relational-databases/views/views?view=sql-server-ver15',
+    'Peñaloza, J. (2020). ¿Que es una transacción? Obtenido de https://www.purocodigo.net/articulo/transacciones-en-mysql',
+    'Programador cli. (s.f.). Desencadenantes en mysql. Obtenido de https://programmerclick.com/article/560155323/',
+    'Robledano, Á. (24 de Septiembre de 2019). Qué es MySQL: Características y ventajas. Obtenido de https://openwebinars.net/blog/que-es-mysql/',
+    'Schiaffarino, A. (12 de Marzo de 2019). Modelo cliente servidor. Obtenido de https://blog.infranetworking.com/modelo-cliente-servidor/',
+    'Soto, J. A. (27 de Julio de 2020). ¿Qué es PowerShell? Obtenido de https://www.geeknetic.es/PowerShell/que-es-y-para-que-sirve',
+    'Sentencias principales de SQL: https://diego.com.es/principales-tipos-de-joins-en-sql'
+]
+
+const dataCompras = [
     'Recibe las solicitudes de compras de las diferentes áreas de la empresa.',
     'Cada solicitud tiene un responsable.',
     'Cada solicitud es autorizada por el jefe del área y posteriormente por el director Financiero.',
@@ -892,29 +905,184 @@ export const dataCompras = [
     'La orden de compra es aprobada por el director Financiero para que sea enviada al proveedor elegido.'
 ]
 
-export const dataAlmacen = [
+const dataAlmacen = [
     'Su función principal es recepcionar los bienes que llegan de los proveedores y distribuirlos a las correspondientes áreas que realizaron las solicitudes de compras.',
     'Cuando llega un proveedor de mercancía, este hace una entrega física de los bienes, los cuales son comparados con la factura que esta entrega y con la orden de compra correspondiente. Si esta acción es correcta se registra una entrada de almacén por cada factura relacionada, con la siguiente información: Número de Entrada, Fecha, Número de factura, Proveedor, Total Bienes, Valor Total (los totales deben coincidir con los de la factura). Adjunto a esta se discriminan los ítems recibidos con la siguiente información: nombre del bien, cantidad entregada.',
     'Cuando el almacén decide despachar los bienes a las diferentes áreas solicitantes, registra cada una de las entregas en Salidas de Almacén con la siguiente información: Número de Salida, Empleado responsable del bien a entregar, fecha de salida, fecha de entrega. Por cada entrega se detalla cada uno de los ítems con la siguiente información: nombre del bien, cantidad entregada.',
     'Una entrada de almacén puede generar muchas salidas de almacén, por ejemplo: Pueden ingresar 500 pacas de papel higiénico, pero como se debe repartir entre varias áreas, cada una requiere de una salida de almacén.'
 ]
 
-export const dataInventarios = [
+const dataInventarios = [
     'Es la encargada de administrar y controlar la ubicación de los bienes dentro de la empresa, por esto antes de que el bien salga del almacén debe ser codificado a través de un código único que lo haga identificable dentro de la empresa.',
     'La ubicación del bien se identifica por la siguiente información: responsable del bien, fecha de entrega, dirección del bien (ubicación).'
 ]
 
-export const dataBibliografia = [
-    'Bigdata-analytics. (s.f.). ¿Qué es un procedimiento almacenado? Obtenido de https://bigdata-analytics.es/sql/stored-procedures/',
-    'Datamedia. (s.f.). ¿Qué es SQL? Obtenido de https://datademia.es/blog/que-es-sql',
-    'Microsoft. (s.f.). Vistas. Obtenido de https://docs.microsoft.com/es-es/sql/relational-databases/views/views?view=sql-server-ver15',
-    'Peñaloza, J. (2020). ¿Que es una transacción? Obtenido de https://www.purocodigo.net/articulo/transacciones-en-mysql',
-    'Programador cli. (s.f.). Desencadenantes en mysql. Obtenido de https://programmerclick.com/article/560155323/',
-    'Robledano, Á. (24 de Septiembre de 2019). Qué es MySQL: Características y ventajas. Obtenido de https://openwebinars.net/blog/que-es-mysql/',
-    'Schiaffarino, A. (12 de Marzo de 2019). Modelo cliente servidor. Obtenido de https://blog.infranetworking.com/modelo-cliente-servidor/',
-    'Soto, J. A. (27 de Julio de 2020). ¿Qué es PowerShell? Obtenido de https://www.geeknetic.es/PowerShell/que-es-y-para-que-sirve',
-    'Sentencias principales de SQL: https://diego.com.es/principales-tipos-de-joins-en-sql'
-]
+export const Header = () => {
+    return (
+        <div className="container-fluid">
+            <div className="row text-center">
+                <h1>Recurso digital</h1>
+            </div>
+        </div>
+    )
+}
+
+export const Bibliografia = () => {
+
+    const [showBibliografia, setshowBibliografia] = useState("block");
+    const [showSqlSentence, setshowSqlSentence] = useState("none");
+
+    const bibliografiaShow = () => {
+        setshowBibliografia("block")
+        setshowSqlSentence("none")
+    }
+
+    const sqlSentencesShow = () => {
+        setshowBibliografia("none")
+        setshowSqlSentence("block")
+    }
+
+    return (
+        <div className='container'>
+            <div className='row justify-content-center'>
+                <button type='button' className='btn btn-success col-md-4 m-2' onClick={() => bibliografiaShow()}>Bibliografía</button>
+                <button type='button' className='btn btn-success col-md-4 m-2' onClick={() => sqlSentencesShow()}>Sentencias SQL</button>
+                <div style={{ display: showBibliografia }}>
+                    <ul>
+                        {dataBibliografia.map((dat, index) => (<li key={index}>{dat}</li>))}
+                    </ul>
+                </div>
+                <div style={{ display: showSqlSentence }}>
+                    <SentenciasSql />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+export const DiseñoProyecto = () => {
+
+    const [avances, setAvances] = useState("block")
+    const [descripcion, setDescripcion] = useState("none")
+
+    const showDescripcion = () => {
+        setAvances("none");
+        setDescripcion("block");
+    }
+
+    const showAvances = () => {
+        setAvances("block");
+        setDescripcion("none");
+    }
+
+    return (
+        <div className="container">
+            <div className="row justify-content-center">
+                <button className="btn btn-primary col-md-3 m-3" onClick={showAvances}>Avances</button>
+                <button className="btn btn-primary col-md-3 m-3" onClick={showDescripcion}>Descripción</button>
+            </div>
+            <div className="row">
+                <div style={{ display: descripcion }}>
+                    <h3>Compras</h3>
+                    <ul>
+                        {dataCompras.map((dat, index) => (<li key={index}>{dat}</li>))}
+                    </ul>
+                    <h3>Almacen</h3>
+                    <ul>
+                        {dataAlmacen.map((dat, index) => (<li key={index}>{dat}</li>))}
+                    </ul>
+                    <h3>Inventario</h3>
+                    <ul>
+                        {dataInventarios.map((dat, index) => (<li key={index}>{dat}</li>))}
+                    </ul>
+                </div>
+                <div style={{ display: avances }}>
+                    <h3 className="text-center">Diseño de la base de datos</h3>
+                    <DiseñoBaseDatos />
+                    <h3 className="text-center">Avance en el diseño de clases</h3>
+                    <img alt="diseñoBD5" src={diseñoBD5} className="d-block w-100" />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export const Diccionario = () => {
+    return (
+        <div>
+            <TableEmpleado />
+            <TableCargo />
+            <TableArea />
+            <TableSolicitudes />
+            <TableCotizaciones />
+            <TableAlmacen />
+            <TableArticulo />
+            <TableTransaccionInterna />
+            <TableProveedor />
+            <TableOrdenCompra />
+            <TableFactura />
+        </div>
+    )
+}
+
+export const Entorno = () => {
+
+    const [intro, setintro] = useState(true);
+    const [install, setinstall] = useState(false);
+    const [ejecu, setejecu] = useState(false)
+    const [introCont, setintroCont] = useState('block');
+    const [installCont, setinstallCont] = useState('none');
+    const [ejecuCont, setejecuCont] = useState('none');
+
+    const Intro = () => {
+        setintroCont('block');
+        setinstallCont('none');
+        setejecuCont('none')
+        setintro(true);
+        setinstall(false);
+        setejecu(false)
+    }
+
+    const Install = () => {
+        setintroCont('none');
+        setinstallCont('block');
+        setejecuCont('none')
+        setintro(false);
+        setinstall(true);
+        setejecu(false)
+    }
+
+    const Ejecu = () => {
+        setintroCont('none');
+        setinstallCont('none');
+        setejecuCont('block')
+        setintro(false);
+        setinstall(false);
+        setejecu(true)
+    }
+
+    return (
+        <div className="container">
+            <div className="row justify-content-center">
+                <button className="btn btn-primary col-md-3 m-3" disabled={intro} onClick={() => Intro()}>Introducción</button>
+                <button className="btn btn-primary col-md-3 m-3" disabled={install} onClick={() => Install()}>Instalación</button>
+                <button className="btn btn-primary col-md-3 m-3" disabled={ejecu} onClick={() => Ejecu()}>Ejecución Mysql PowerShell</button>
+            </div>
+            <div className="row">
+                <div style={{ display: introCont }}>
+                    <Introducción />
+                </div>
+                <div style={{ display: installCont }}>
+                    <Instalacion />
+                </div>
+                <div style={{ display: ejecuCont }}>
+                    <Ejecucion />
+                </div>
+            </div>
+        </div>
+    )
+}
 
 export const Introducción = () => {
     return (
@@ -938,40 +1106,40 @@ export const Introducción = () => {
     )
 }
 
-export const Instalacion = () => {
+const Instalacion = () => {
     return (
         <div>
             <ul>
-                {dataInstall.map((dt) => (<li className="mt-3">
+                {dataInstall.map((dt, index) => (<li key={index} className="mt-3">
                     <b>{dt.title}</b> <br />
                     {dt.descripcion} <br />
-                    <img src={dt.img} className="d-block w-100" />
+                    <img alt="dt" src={dt.img} className="d-block w-100" />
                 </li>))}
             </ul>
         </div>
     )
 }
 
-export const Ejecucion = () => {
+const Ejecucion = () => {
     return (
         <div>
             <ul>
                 {dataEjecucion.map((dt, index) => (<li key={index} className="mt-3">
                     {dt.description} <br />
-                    <img src={dt.img} className="d-block w-100" />
+                    <img alt="dt" src={dt.img} className="d-block w-100" />
                 </li>))}
             </ul>
         </div>
     )
 }
 
-export const DiseñoBaseDatos = () => {
+const DiseñoBaseDatos = () => {
     return (
         <div>
             <ul>
                 {diseñoDB.map((dat, index) => (
                     <li key={index}>
-                        <img src={dat} className="d-block w-100" />
+                        <img alt="dat" src={dat} className="d-block w-100" />
                     </li>
                 ))}
             </ul>
@@ -979,47 +1147,47 @@ export const DiseñoBaseDatos = () => {
     )
 }
 
-export const SentenciasSql = () => {
+const SentenciasSql = () => {
     return (
         <div>
             <h3 className="text-center">Principales sentencias de sql</h3>
             <p>Crear una base de datos y usarla</p>
-            <img src={createTable1} className="d-block w-100" />
+            <img alt="createTable1" src={createTable1} className="d-block w-100" />
             <p>Crear una tabla</p>
-            <img src={createTable2} className="d-block w-100" />
+            <img alt="createTable2" src={createTable2} className="d-block w-100" />
             <h3 className="text-center">Inner join</h3>
             <p>
                 INNER JOIN lo que hace es seleccionar todas las filas de las dos columnas siempre y cuando haya una coincidencia entre las columnas en ambas tablas. Es el tipo de JOIN más común.
             </p>
-            <img src={innerJoin1} className="d-block w-100" />
-            <img src={innerJoin2} className="d-block w-100" />
+            <img alt="innerJoin1" src={innerJoin1} className="d-block w-100" />
+            <img alt="innerJoin2" src={innerJoin2} className="d-block w-100" />
             <h3 className="text-center">Aplicándolo a nuestro proyecto</h3>
-            <img src={nuestroProyecto1} className="d-block w-100" />
-            <img src={nuestroProyecto2} className="d-block w-100" />
+            <img alt="nuestroProyecto1" src={nuestroProyecto1} className="d-block w-100" />
+            <img alt="nuestroProyecto2" src={nuestroProyecto2} className="d-block w-100" />
             <h3 className="text-center">Left join</h3>
             <p>
                 LEFT JOIN mantiene todas las filas de la tabla izquierda (la tabla1). Las filas de la tabla derecha se mostrarán si hay una coincidencia con las de la izquierda. Si existen valores en la tabla izquierda pero no en la tabla derecha, ésta mostrará null.
             </p>
-            <img src={leftJoin1} className="d-block w-100" />
-            <img src={leftJoin2} className="d-block w-100" />
+            <img alt="leftJoin1" src={leftJoin1} className="d-block w-100" />
+            <img alt="leftJoin2" src={leftJoin2} className="d-block w-100" />
             <h3 className="text-center">Aplicándolo a nuestro proyecto</h3>
-            <img src={nuestroProyecto3} className="d-block w-100" />
-            <img src={nuestroProyecto4} className="d-block w-100" />
+            <img alt="nuestroProyecto3" src={nuestroProyecto3} className="d-block w-100" />
+            <img alt="nuestroProyecto4" src={nuestroProyecto4} className="d-block w-100" />
             <h3 className="text-center">RIGHT JOIN</h3>
             <p>
                 Es igual que LEFT JOIN pero al revés. Ahora se mantienen todas las filas de la tabla derecha (tabla2). Las filas de la tabla izquierda se mostrarán si hay una coincidencia con las de la derecha. Si existen valores en la tabla derecha pero no en la tabla izquierda, ésta se mostrará null.
             </p>
-            <img src={rightJoin1} className="d-block w-100" />
-            <img src={rightJoin2} className="d-block w-100" />
+            <img alt="rightJoin1" src={rightJoin1} className="d-block w-100" />
+            <img alt="rightJoin2" src={rightJoin2} className="d-block w-100" />
             <h3 className="text-center">Aplicándolo a nuestro proyecto</h3>
-            <img src={nuestroProyecto5} className="d-block w-100" />
-            <img src={nuestroProyecto6} className="d-block w-100" />
+            <img alt="nuestroProyecto5" src={nuestroProyecto5} className="d-block w-100" />
+            <img alt="nuestroProyecto6" src={nuestroProyecto6} className="d-block w-100" />
             <p>En este caso no muestra el dato repetido que están en la tabla empleado, y tampoco los que no tienen asignado un cargo</p>
         </div>
     )
 }
 
-export const TableEmpleado = () => {
+const TableEmpleado = () => {
     return (
         <div>
             <h3>1. Tabla: Empleado</h3>
@@ -1053,7 +1221,7 @@ export const TableEmpleado = () => {
     )
 }
 
-export const TableCargo = () => {
+const TableCargo = () => {
     return (
         <div>
             <h3>2. Tabla: Cargo</h3>
@@ -1087,7 +1255,7 @@ export const TableCargo = () => {
     )
 }
 
-export const TableArea = () => {
+const TableArea = () => {
     return (
         <div>
             <h3>3. Tabla: Area</h3>
@@ -1121,7 +1289,7 @@ export const TableArea = () => {
     )
 }
 
-export const TableSolicitudes = () => {
+const TableSolicitudes = () => {
     return (
         <div>
             <h3>4. Tabla: Solicitudes</h3>
@@ -1155,7 +1323,7 @@ export const TableSolicitudes = () => {
     )
 }
 
-export const TableCotizaciones = () => {
+const TableCotizaciones = () => {
     return (
         <div>
             <h3>5. Tabla: Cotizaciones</h3>
@@ -1189,7 +1357,7 @@ export const TableCotizaciones = () => {
     )
 }
 
-export const TableAlmacen = () => {
+const TableAlmacen = () => {
     return (
         <div>
             <h3>6. Tabla: Almacen</h3>
@@ -1223,7 +1391,7 @@ export const TableAlmacen = () => {
     )
 }
 
-export const TableArticulo = () => {
+const TableArticulo = () => {
     return (
         <div>
             <h3>7. Tabla: Articulo</h3>
@@ -1257,7 +1425,7 @@ export const TableArticulo = () => {
     )
 }
 
-export const TableTransaccionInterna = () => {
+const TableTransaccionInterna = () => {
     return (
         <div>
             <h3>8. Tabla: Transacción Interna</h3>
@@ -1291,7 +1459,7 @@ export const TableTransaccionInterna = () => {
     )
 }
 
-export const TableProveedor = () => {
+const TableProveedor = () => {
     return (
         <div>
             <h3>9. Tabla: Proveedor</h3>
@@ -1325,7 +1493,7 @@ export const TableProveedor = () => {
     )
 }
 
-export const TableOrdenCompra = () => {
+const TableOrdenCompra = () => {
     return (
         <div>
             <h3>10. Tabla: Proveedor</h3>
@@ -1359,7 +1527,7 @@ export const TableOrdenCompra = () => {
     )
 }
 
-export const TableFactura = () => {
+const TableFactura = () => {
     return (
         <div>
             <h3>10. Tabla: Proveedor</h3>

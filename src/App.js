@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Header from "./components/header/header";
-import Entorno from "./components/body/entorno";
-import DiseñoProyecto from "./components/body/diseñoProyecto";
-import Bibliografia from "./components/body/bibliografia";
+import { Header } from "./variables/variables";
+import { Entorno } from "./variables/variables";
+import { DiseñoProyecto } from "./variables/variables";
+import { Bibliografia } from "./variables/variables";
+import { Diccionario } from "./variables/variables";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Diccionario from "./components/body/diccionario";
 
 const App = () => {
 
